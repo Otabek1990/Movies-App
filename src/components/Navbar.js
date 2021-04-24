@@ -7,12 +7,11 @@ const Navbar=()=> {
         return (
             <Nav>
                 <Logo>
-                    <Link to="/"><img src={ItvLogo} alt="itv"/></Link>
+                    <Link  to="/"><img src={ItvLogo} alt="itv"/></Link>
 
                 </Logo>
                 <Right>
-                    <Link to="/"><p>Home</p></Link>
-                    <Link to="/moviesId"><p>Movies</p></Link>
+                    <Link style={{textDecoration:'none'}} to="/"><p>Home</p></Link>
                 </Right>
                 
             </Nav>
@@ -26,7 +25,7 @@ const Nav=styled.div`
 display:flex;
 justify-content:space-between;
 height:70px;
-background-color:rgba(0,0,0,0.8);
+background-color:orange;
 align-items:center;
 padding:0 13px;
 
@@ -43,12 +42,13 @@ display:flex;
 
 p{
     padding:0 5px;
+    font-weight:bolder;
     font-size:18px;
     cursor:pointer;
-    font-weight:bolder;
     color:white;
+    text-decoration:none;
     :hover{
-        color:coral
+        color:rgba(0,0,0,0.7)
     }
 }
 `

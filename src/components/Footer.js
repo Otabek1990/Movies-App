@@ -1,15 +1,9 @@
 import React from 'react';
-import Pagination  from '@material-ui/lab/Pagination';
 
-
-const Footer=()=> {
-        return (
-            <div>
-            <Pagination count={10} shape="rounded" />
-                salom
-            </div>
-        )
-    
+const Footer = (props) => {
+  return (
+    <div></div>
+  )
 }
 
 export default Footer;
