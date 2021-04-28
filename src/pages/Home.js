@@ -1,98 +1,78 @@
 import React,{useState,useEffect} from 'react';
 import styled from 'styled-components'
-import axios from 'axios';
 import {useSelector,useDispatch} from 'react-redux';
 import {add_infos} from '../redux/reducer';
-import itvLogo from '../ITVlogo.jpg';
-import {Link,useHistory} from 'react-router-dom';
-import requested from "../moviesInfos"
+import {useHistory} from 'react-router-dom';
+import requests from "../requests";
+import instance from '../axios';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 //import ReactPaginate from 'react-paginate';
 
 
 
 
 const Home=()=> {
-    const movies=useSelector(state=>state.movies)
+    const movies=useSelector(state=>state.movies.movies)
     const dispatch=useDispatch()
-    console.log(movies)
-    const history=useHistory()
-    const API_KEY="2d2fbe2109624c745434d0c3c18b24a0"
     const [moviesInfos, setMoviesInfos] = useState([])
+    const history=useHistory()
+    //const API_KEY="2d2fbe2109624c745434d0c3c18b24a0";
     //const TOKEN="43683e700149963c1040ce7cfa2d4web";
     //const ITV_HTTP="https://api.itv.uz/api/content/main/2/list?user=43683e700149963c1040ce7cfa2d4web"
 
     //-------------
-console.log(requested)
-    const array=[
-    {
-    id:"otash"
-     },
-     {
-        id:"newId"
-     }
-    ]
-    //------------------------------
-    const getMoviesInfos=()=>{
-      const instance=axios.create({
-        baseURL:"https://api.themoviedb.org/3",
-      })
-      instance.get(`/${requested. fetchComedyMovies}`)
-      .then(res=>
-        console.log(res)
-  
-        )
-        
 
+//console.log(moviesInfos)
 
-      /*axios.get(`https://api.themoviedb.org/3/movie/550?api_key=${API_KEY}`)
-      .then(res=>{
-        console.log(res.data)
-        console.log(res.data.homepage)
-
-        console.log(res.data.poster_path)
-
-       const datas=res.data;
-
-
-        const MoviesObj={
-          id:datas.id,
-          title:datas.title,
-          posterUrl:datas.homepage,
-          genres:datas.genres[0].name
-        }
-        setMoviesInfos([MoviesObj])
-      }
-        )*/
-    
-    }
-console.log(moviesInfos)
+ const base_URL="https://image.tmdb.org/t/p/original/";
+const fetchURL=requests.fetchTrending;
     //------------
-    const getMovie=(id)=>{
+     const getMovie=(e,id)=>{
+      e.preventDefault()
         history.push(`/${id}`)
 
     }
     //---------------------------
-    useEffect(() => {
-      getMoviesInfos()
-      dispatch(add_infos("fozilov"))
-    }, [])
-    
+   useEffect(() => {
+
+      const fetchData=async()=>{
+        const request= await instance.get(fetchURL);
+        const results=request.data.results
+        console.log(results)
+        //setMoviesInfos(results)
+      dispatch(add_infos(results))
+
+      }
+      fetchData()
+      const slice1=movies.slice(0,5)
+      const slice2=movies.slice(5,10)
+      const slice3=movies.slice(10,15)
+      const slice4=movies.slice(15,20)
+
+    }, [fetchURL])
+
+   
+
         return (
-            <Main>
-            {moviesInfos ? moviesInfos.map(item=>
-              
-            <Images>
-             <img 
-            src={item.posterUrl} alt="movie"
-            onClick={()=>getMovie(item.id)}
-            />
-            <p>Title: {item.title}</p>
-            <p>Genres: {item.genres}</p>
-         
-         </Images>
-         ):null}    
-                
-            </Main>
+            
+            <Container>
+
+              <div className="row">
+              {movies ? movies.map((item)=>
+                <div className={"col-3 table-bordered"}>
+
+                  <p>{item.name}</p>
+                  <p>{item.post}</p>
+                  <p>{item.id}</p>
+                  
+                </div>
+               
+                ):null}  
+              </div>
+            </Container>
+            
         )
     
 }
@@ -100,17 +80,81 @@ console.log(moviesInfos)
 export default Home;
 
 const Main=styled.div`
+padding:10px;
 display:flex;
-height:530px;
+flex-direction:column;
 background-color:blue;
+height:80vh
+
+`
+const Columns=styled.div`
+display:flex;
+
 
 
 `
+const Columns1=styled.div`
+display:flex;
+
+`
+const Columns2=styled.div`
+display:flex;
+
+`
+
+
 const Images=styled.div`
-margin:10px;
+width:1000px;
+margin:20px;
+cursor:pointer;
 img{
     height:200px;
     margin-left:10px;
     cursor:pointer;
+
+}
+p{
+  margin-top:5px;
+  font-size:18px;
+  font-weight:bolder;
+  color:white
 }
 `
+
+ /* {moviesInfos.map(movie=>(
+
+            <Images >
+     
+             <img 
+            src={`${base_URL}${movie.poster_path}`} alt={movie.title}
+            onClick={()=>getMovie(movie.id)}
+            />
+            <p>Title:{movie.title} </p>
+         
+  
+         </Images>
+          ))
+        }*/
+
+            /*<Columns1>
+                     {slice2.map(item=>(
+              <Images>
+              <p>{item.name}</p>
+              <p>{item.post}</p>
+              <p>{item.id}</p>
+              </Images>
+
+
+              ))}
+              </Columns1> 
+                <Columns2>
+                     {slice3.map(item=>(
+              <Images>
+              <p>{item.name}</p>
+              <p>{item.post}</p>
+              <p>{item.id}</p>
+              </Images>
+
+
+              ))}
+              </Columns2>*/

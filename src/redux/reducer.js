@@ -9,7 +9,7 @@ const movies=createSlice({
 	initialState,
 	reducers:{
 		add_infos:(state,action)=>{
-		state.movies.push(action.payload)
+		state.movies=[...action.payload]
 		}
 	}
 })

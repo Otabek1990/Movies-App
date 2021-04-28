@@ -1,41 +1,31 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import styled from 'styled-components';
 import {useParams} from 'react-router-dom';
+import {useSelector,useDispatch} from 'react-redux';
+
 
 const Movies=()=> {
 	    const {moviesId}=useParams();
+        const movies=useSelector(state=>state.movies.movies)
+    console.log(movies)
 
-	 const array=[
-    {
-    id:"otash",
-    name:"Otabekjon",
-    poster:"Otashdan Poster",
-    	about:"OTashdan About",
-    	image:"Otashdan Image"
-     },
-     {
-        id:"newId",
-        name:"ism",
-    	poster:"lavha",
-    	about:"haqida",
-    	image:"rasm"
-
-     }
-    ]
-    const getId=array.filter(ind=>
-    	ind.id===moviesId
-    	)
+    const getId=movies.filter(item=>
+    	 item.id==moviesId
     
-    //console.log(arr)
+    	)
+
+
+    
+  
+    console.log(moviesId)
 console.log(getId)
         return (
             <Main>
             {getId.map(item=>(
             	<Infos>
             	<p>{item.name}</p>
-            	<p>{item.poster}</p>
-            	<p>{item.about}</p>
-            	<p>{item.image}</p>
+            	<p>{item.post}</p>
+            	<p>{item.id}</p>
                 </Infos>
             	))
         }
