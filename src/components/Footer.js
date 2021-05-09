@@ -5,111 +5,22 @@ import {add_infos} from '../redux/reducer';
 
 
 const Footer = (props) => {
- const movies=useSelector(state=>state.movies.movies)
+ const moviesArray=useSelector(state=>state.movies.moviesArray)
  const dispatch=useDispatch()
-console.log(movies)
+console.log(moviesArray)
 
-    const example=[
-    {
-      post:"img",
-      name:"titanic",
-      id:123,
-
-    },
-     {
-      post:"img222",
-      name:"titanic22",
-      id:12322,
-
-    },
-     {
-      post:"img33",
-      name:"titanic33",
-      id:12333,
-
-    },
-     {
-      post:"img44",
-      name:"titanic44",
-      id:12344,
-
-    },
-     {
-      post:"img55",
-      name:"titanic55",
-      id:12355,
-
-    } ,
-    {
-      post:"img66",
-      name:"titanic66",
-      id:12366,
-
-    },
-     {
-      post:"img77",
-      name:"titanic77",
-      id:12377,
-
-    },{
-      post:"img88",
-      name:"titanic88",
-      id:12388,
-
-    },{
-      post:"img99",
-      name:"titanic99",
-      id:12399,
-
-    },{
-      post:"img100",
-      name:"titanic100",
-      id:123100,
-
-    },{
-      post:"img111",
-      name:"titanic111",
-      id:123111,
-
-    },{
-      post:"img111",
-      name:"titanic111",
-      id:123111,
-
-    },{
-      post:"img111",
-      name:"titanic111",
-      id:123111,
-
-    },{
-      post:"img111",
-      name:"titanic111",
-      id:123111,
-
-    },{
-      post:"img111",
-      name:"titanic111",
-      id:123111,
-
-    }
-    ]
+   
 
 const firstPage=()=>{
-	console.log(111)
-   const slice1=example.slice(0,5)
-   dispatch(add_infos(slice1))
+
 
 }
 const secondPage=()=>{
-		console.log(222)
-   const slice2=example.slice(5,10)
-   dispatch(add_infos(slice2))
+
 
 }
 const thirdPage=()=>{
-		console.log(333)
-   const slice3=example.slice(10,15)
-   dispatch(add_infos(slice3))
+
 
 }
 
@@ -131,7 +42,6 @@ const thirdPage=()=>{
 <button>10</button>
 </Buttons>
 
-
     </FooterComponent>
   )
 }
@@ -140,16 +50,16 @@ export default Footer;
 
 const FooterComponent=styled.div`
 background-color:coral;
+
 `
 const Buttons=styled.div`
 display:flex;
-
 justify-content:center;
 
 button{
 	margin:10px;
 	margin-left:5px;
-	padding:10px 15px;
+	padding:6px 10px;
    border-radius:2px;
    border:none;
    cursor:pointer;

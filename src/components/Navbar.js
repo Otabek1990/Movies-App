@@ -12,6 +12,7 @@ const Navbar=()=> {
                 </Logo>
                 <Right>
                     <Link style={{textDecoration:'none'}} to="/"><p>Home</p></Link>
+                    <Link style={{textDecoration:'none'}} to="/"><p>Type of Movies</p></Link>
                 </Right>
                 
             </Nav>
@@ -22,12 +23,13 @@ const Navbar=()=> {
 export default Navbar;
 
 const Nav=styled.div`
+
 display:flex;
 justify-content:space-between;
-height:70px;
+height:60px;
 background-color:orange;
 align-items:center;
-padding:0 13px;
+padding: 13px;
 
 `
 const Logo=styled.div`
