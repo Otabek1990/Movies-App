@@ -1,7 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 export const initialState={
-	moviesArray:[]
+	moviesArray:[],
+	moviesType: "Trending"
 };
 
 const movies=createSlice({
@@ -10,10 +11,13 @@ const movies=createSlice({
 	reducers:{
 		add_infos:(state,action)=>{
 		state.moviesArray=[...action.payload]
+		},
+		add_types:(state,action)=>{
+			state.moviesType=action.payload
 		}
 	}
 })
 
-export const {add_infos}=movies.actions;
+export const {add_infos,add_types}=movies.actions;
 export default movies.reducer;
 

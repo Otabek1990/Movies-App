@@ -1,71 +1,81 @@
-import React,{useEffect} from 'react';
-import styled from 'styled-components';
-import {useSelector,useDispatch} from 'react-redux';
-import {add_infos} from '../redux/reducer';
+import { BottomNavigation } from "@material-ui/core";
+import React from "react";
+import styled from "styled-components";
 
 
 const Footer = (props) => {
- const moviesArray=useSelector(state=>state.movies.moviesArray)
- const dispatch=useDispatch()
-console.log(moviesArray)
+  
 
-   
+  
 
-const firstPage=()=>{
-
-
-}
-const secondPage=()=>{
-
-
-}
-const thirdPage=()=>{
-
-
-}
-
-/*useEffect(() => {
-
-}, [])*/
   return (
     <FooterComponent>
-<Buttons>
-<button onClick={firstPage}>1</button>
-<button onClick={secondPage}>2</button>
-<button onClick={thirdPage}>3</button>
-<button>4</button>
-<button>5</button>
-<button>6</button>
-<button>7</button>
-<button>8</button>
-<button>9</button>
-<button>10</button>
-</Buttons>
-
+      <h5>Questions? Contact us.</h5>
+      <Bottom className="container">
+        <div className="row">
+           <div className="col col-4">
+              Contact Us
+           </div>
+           <div className="col col-4">
+              Account
+           </div>
+           <div className="col col-4">
+              Help Center
+           </div>
+          </div>
+        <div className="row">
+           <div className="col col-4">
+              Privacy
+           </div>
+           <div className="col col-4">
+              Jobs
+           </div>
+           <div className="col col-4">
+              Terms of Use
+           </div>
+          </div>
+        <div className="row">
+           <div className="col col-4">
+              FAQ
+           </div>
+           <div className="col col-4">
+              Netflix Originals
+           </div>
+           <div className="col col-4">
+              Legal Notice
+           </div>
+          </div>
+      </Bottom>
     </FooterComponent>
-  )
-}
+  );
+};
 
 export default Footer;
 
-const FooterComponent=styled.div`
-background-color:coral;
-
+const FooterComponent = styled.div`
+  background-color: coral;
+  height:100%;
+ display:flex;
+ flex-direction:column;
+ padding:10px 20px;;
+ h5{
+   
+   text-align:left;
+   margin-left:17px
+ }
 `
-const Buttons=styled.div`
+const Bottom=styled.div`
 display:flex;
-justify-content:center;
+flex-direction:column;
+.row{
+  margin-top:6px;
+  font-size:15px;
+  color:rgba(0,0,0,0.7);
+  cursor:pointer
+}
+.col:hover{
+  color:royalblue;
+  text-decoration:underline
 
-button{
-	margin:10px;
-	margin-left:5px;
-	padding:6px 10px;
-   border-radius:2px;
-   border:none;
-   cursor:pointer;
-   transition:0.3s ease;
-   :hover{
-   	background-color:orange
-  }
 }
 `
